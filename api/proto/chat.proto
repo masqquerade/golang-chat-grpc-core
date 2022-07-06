@@ -2,14 +2,14 @@ syntax = "proto3";
 
 package api;
 
-service Chat {
-    rpc SendMessage(SendMessageRequest) returns (stream SendMessageResponse){}
-}
-
-message SendMessageRequest {
-    string message = 1;
+service ChatService {
+    rpc Connect(Null) returns (stream Message);
+    rpc SendMessage(Message) returns (Null);
 };
 
-message SendMessageResponse {
-    string result = 1;
+message Message {
+    string uname = 1;
+    string msg = 2;
 };
+
+message Null {};
